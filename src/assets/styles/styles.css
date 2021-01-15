@@ -145,6 +145,21 @@ body {
   padding-left: 15px;
   font-weight: bold;
 }
+nav{
+  margin:10px 5px
+}
+.nav-page__button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.selected{
+  border-bottom:  2px solid black
+}
+.nav-page__button:hover{
+  background-color: lavender;
+  border-radius: 50%;
+}
 #root {
   display: flex;
   flex-direction: column;
@@ -297,6 +312,7 @@ button {
 .delete-title {
   padding-top: 30px;
   padding-bottom: 10px;
+  text-align: center;
 }
 @media screen and (min-width: 720px) {
   .post-item {

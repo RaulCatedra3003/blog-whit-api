@@ -9,6 +9,7 @@ import {
   savePostChanges,
   openDeletePostModal,
   deletePost,
+  changePostlist,
 } from '../dispatcher/dispatcher';
 import { Comment } from '../views/components/Comment';
 import { EditPostModal } from '../views/components/EditPostModal';
@@ -27,6 +28,7 @@ export const addEventListenersFragment = status => {
   switch (status) {
     case 'home':
       $('.post-item__content h2').on('click', openPostModal);
+      $('.nav-page__button').on('click', changePostlist);
       $('.bx-edit').on('click', openEditPostModal);
       $('.bxs-trash').on('click', openDeletePostModal);
       break;

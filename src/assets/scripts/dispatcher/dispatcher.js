@@ -13,12 +13,19 @@ import { PostModal } from '../views/components/PostModal';
 import { renderView } from '../views/renderView';
 import { deletePostInAPI } from '../API-logic/delete';
 
-export let status;
+export const status = {
+  page: 'home',
+  start: 0,
+  limit: 20,
+  position: 1,
+};
 
 export const homeApp = () => {
-  getPostList(0, 10).done(postList => {
-    status = 'home';
+  getPostList(status.start, status.limit).done(postList => {
+    status.page = 'home';
     renderView(createFragmentList(postList));
+    $('.nav-page__button').removeClass('selected');
+    $(`.nav-page__button:nth-child(${status.position})`).addClass('selected');
   });
 };
 
@@ -33,7 +40,7 @@ export const openPostModal = e => {
         email: email,
         postId: id,
       };
-      status = 'postModal';
+      status.page = 'postModal';
       renderView(createModalFragment(content, PostModal));
     });
   });
@@ -41,7 +48,7 @@ export const openPostModal = e => {
 
 export const closePostModal = e => {
   e.preventDefault();
-  status = 'home';
+  status.page = 'home';
   renderView(backHomePage());
 };
 
@@ -55,7 +62,7 @@ export const showPostComments = e => {
 export const openEditPostModal = e => {
   e.preventDefault();
   getPost($(e.target).data('id')).done(data => {
-    status = 'editPostModal';
+    status.page = 'editPostModal';
     renderView(createModalFragment(data, EditPostModal));
   });
 };
@@ -90,7 +97,7 @@ export const savePostChanges = e => {
 
 export const openDeletePostModal = e => {
   e.preventDefault();
-  status = 'deletePostModal';
+  status.page = 'deletePostModal';
   renderView(createModalFragment($(e.target).data('postId'), DeletePostModal));
 };
 
@@ -108,4 +115,27 @@ export const deletePost = e => {
       homeApp();
     }, 5000);
   });
+};
+
+export const changePostlist = e => {
+  e.preventDefault();
+  switch ($(e.target).text()) {
+    case '1':
+      status.start = 0;
+      break;
+    case '2':
+      status.start = 20;
+      break;
+    case '3':
+      status.start = 40;
+      break;
+    case '4':
+      status.start = 60;
+      break;
+    case '5':
+      status.start = 80;
+      break;
+  }
+  homeApp();
+  status.position = parseInt($(e.target).text());
 };
