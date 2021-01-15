@@ -1,9 +1,12 @@
-import { openModal } from '../dispatcher/dispatcher';
 import { Navbar } from '../views/components/Navbar';
 import { Post } from '../views/components/Post';
 import { PostModal } from '../views/components/PostModal';
-import { openPostModal } from '../dispatcher/dispatcher';
-import { closePostModal } from '../dispatcher/dispatcher';
+import {
+  openPostModal,
+  closePostModal,
+  showPostComments,
+} from '../dispatcher/dispatcher';
+import { Comment } from '../views/components/Comment';
 
 export const createFragmentList = data => {
   const fragment = $(document.createDocumentFragment());
@@ -26,6 +29,7 @@ export const addEventListenersFragment = status => {
         $(element).off('click', openPostModal);
       });
       $('.bx-x-circle').on('click', closePostModal);
+      $('#comment-button').on('click', showPostComments);
   }
 };
 
@@ -40,5 +44,13 @@ export const backHomePage = () => {
   $('#root').children().last().remove();
   const fragment = $(document.createDocumentFragment());
   $(fragment).append($('#root').html());
+  return fragment;
+};
+
+export const createCommentsList = data => {
+  const fragment = $(document.createDocumentFragment());
+  data.forEach(element => {
+    $(fragment).append(Comment(element));
+  });
   return fragment;
 };

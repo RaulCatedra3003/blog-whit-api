@@ -1,5 +1,5 @@
 //POST MODAL
-export const PostModal = ({ title, body, username, email }) => {
+export const PostModal = ({ title, body, username, email, postId }) => {
   const template = `
   <section class="postModal-item">
     <section class="postModal-item__content">
@@ -16,7 +16,7 @@ export const PostModal = ({ title, body, username, email }) => {
       </section>
       <section class="postModal-item__comentarios">
         <h2>Comments:</h2>
-        <button>Show comments</button>
+        <button id="comment-button" data-postId="${postId}">Show comments</button>
       </section>
       <section id="comments-content"></section>
     </section>

@@ -23,3 +23,12 @@ export const getUser = userId => {
 
   return $.ajax(settings);
 };
+
+export const getComments = postId => {
+  const settings = {
+    url: `https://jsonplaceholder.typicode.com/comments?postId=${postId}`,
+    method: 'GET',
+  };
+
+  return $.ajax(settings);
+};
