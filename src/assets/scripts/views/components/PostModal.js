@@ -1,4 +1,3 @@
-//POST MODAL
 export const PostModal = ({ title, body, username, email, postId }) => {
   const template = `
   <section class="postModal-item">

@@ -8,7 +8,7 @@ export const Post = ({ title, body, id, userId }) => {
       <p>${body}</p>
     </section>
     <section class="post-item__button">
-      <button class='bx bx-edit'></button>
+      <button class='bx bx-edit' data-id="${id}"></button>
       <button class='bx bxs-trash'></button>
     </section>
   </section>`;

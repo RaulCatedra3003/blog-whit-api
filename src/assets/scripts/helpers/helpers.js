@@ -5,8 +5,11 @@ import {
   openPostModal,
   closePostModal,
   showPostComments,
+  openEditPostModal,
+  savePostChanges,
 } from '../dispatcher/dispatcher';
 import { Comment } from '../views/components/Comment';
+import { EditPostModal } from '../views/components/EditPostModal';
 
 export const createFragmentList = data => {
   const fragment = $(document.createDocumentFragment());
@@ -18,25 +21,28 @@ export const createFragmentList = data => {
 };
 
 export const addEventListenersFragment = status => {
+  $(document).off().find('*').off();
   switch (status) {
     case 'home':
       $('.post-item__content h2').each((index, element) => {
         $(element).on('click', openPostModal);
       });
+      $('.bx-edit').on('click', openEditPostModal);
       break;
     case 'postModal':
-      $('.post-item__content h2').each((index, element) => {
-        $(element).off('click', openPostModal);
-      });
       $('.bx-x-circle').on('click', closePostModal);
       $('#comment-button').on('click', showPostComments);
+      break;
+    case 'editPostModal':
+      $('.bx-x-circle').on('click', closePostModal);
+      $('#save-button').on('click', savePostChanges);
   }
 };
 
-export const createModalFragment = content => {
+export const createModalFragment = (content, modalType) => {
   const fragment = $(document.createDocumentFragment());
   $(fragment).append($('#root').html());
-  $(fragment).append(PostModal(content));
+  $(fragment).append(modalType(content));
   return fragment;
 };
 
@@ -53,4 +59,11 @@ export const createCommentsList = data => {
     $(fragment).append(Comment(element));
   });
   return fragment;
+};
+
+export const validateInput = () => {
+  return (
+    $('#editPostModal-Content__title').val().length > 1 &&
+    $('#editPostModal-Content__body').text().length > 10
+  );
 };
