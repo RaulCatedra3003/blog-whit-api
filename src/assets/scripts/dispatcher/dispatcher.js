@@ -1,15 +1,21 @@
 import { getPost, getPostList, getUser } from '../API-logic/get';
-import { createFragmentList } from '../helpers/helpers';
-import { PostModal } from '../views/components/PostModal';
+import {
+  backHomePage,
+  createFragmentList,
+  createModalFragment,
+} from '../helpers/helpers';
 import { renderView } from '../views/renderView';
 
+export let status;
+
 export const initApp = () => {
-  getPostList(0, 15).done(postList => {
+  getPostList(0, 10).done(postList => {
+    status = 'home';
     renderView(createFragmentList(postList));
   });
 };
 
-export const openModal = e => {
+export const openPostModal = e => {
   e.preventDefault();
   getPost(e.target.id).done(({ userId, title, body }) => {
     getUser(userId).done(({ username, email }) => {
@@ -19,14 +25,14 @@ export const openModal = e => {
         body: body,
         email: email,
       };
+      status = 'postModal';
       renderView(createModalFragment(content));
     });
   });
 };
 
-const createModalFragment = content => {
-  const fragment = $(document.createDocumentFragment());
-  $(fragment).append($('#root').html());
-  $(fragment).append(PostModal(content));
-  return fragment;
+export const closePostModal = e => {
+  e.preventDefault();
+  status = 'home';
+  renderView(backHomePage());
 };

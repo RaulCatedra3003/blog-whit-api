@@ -3,16 +3,22 @@ export const PostModal = ({ title, body, username, email }) => {
   const template = `
   <section class="postModal-item">
     <section class="postModal-item__content">
+      <section class="postModal-item__close">
+        <button class="bx bx-x-circle"></button>
+      </section>
       <section class="postModalContent__title">
         <h2>${title}</h2>
         <p>${body}</p>
       </section>
       <section class="postModalContent__user">
-        <p>User: ${username}</p>
-        <p>Email: ${email}</p>
+        <p><strong>User:</strong> ${username}</p>
+        <p><strong>Email:</strong> ${email}</p>
       </section>
-    </section>
-    <section class="postModal-item__comentarios">
+      <section class="postModal-item__comentarios">
+        <h2>Comments:</h2>
+        <button>Show comments</button>
+      </section>
+      <section id="comments-content"></section>
     </section>
   </section>`;
   return template;

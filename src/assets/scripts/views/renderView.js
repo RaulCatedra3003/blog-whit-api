@@ -1,7 +1,7 @@
 import { addEventListenersFragment } from '../helpers/helpers';
-import { Navbar } from './components/Navbar';
+import { status } from '../dispatcher/dispatcher';
 
 export const renderView = fragment => {
   $('#root').html(fragment);
-  addEventListenersFragment();
+  addEventListenersFragment(status);
 };
