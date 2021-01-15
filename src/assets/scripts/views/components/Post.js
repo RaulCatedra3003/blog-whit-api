@@ -1,9 +1,9 @@
 //POST
-export const Post = ({ title, body }) => {
+export const Post = ({ title, body, id, userId }) => {
   const template = `
   <section class="post-item">
     <section class="post-item__content">
-      <h2>${title}</h2>
+      <h2 id="${id}" data-userId="${userId}">${title}</h2>
       <hr />
       <p>${body}</p>
     </section>

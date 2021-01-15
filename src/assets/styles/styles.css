@@ -49,6 +49,7 @@ table {
 /*RESET*/
 body{
   font-family: Helvetica, Arial, sans-serif;
+  position: relative;
 }
 .header{
   background-color: lavender;
@@ -83,6 +84,7 @@ body{
 }
 .post-item__content h2{
   margin: 5px 0;
+  cursor: pointer;
   font-size: 1.1em;
   font-weight: bold;
 }
@@ -106,6 +108,18 @@ button{
   background-color: transparent;
   cursor: pointer;
   margin: 0 5px;
+}
+.postModal-item{
+  position: fixed;
+  background-color: grey;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (min-width: 720px) {
   .post-item {
