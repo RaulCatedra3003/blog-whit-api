@@ -9,7 +9,7 @@ export const Post = ({ title, body, id, userId }) => {
     </section>
     <section class="post-item__button">
       <button class='bx bx-edit' data-id="${id}"></button>
-      <button class='bx bxs-trash'></button>
+      <button class='bx bxs-trash' data-id="${id}"></button>
     </section>
   </section>`;
   return template;

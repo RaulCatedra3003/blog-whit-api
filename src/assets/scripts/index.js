@@ -1,4 +1,4 @@
 import '../styles/styles.css';
-import { initApp } from './dispatcher/dispatcher';
+import { homeApp } from './dispatcher/dispatcher';
 
-initApp();
+homeApp();

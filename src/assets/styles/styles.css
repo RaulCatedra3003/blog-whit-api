@@ -294,6 +294,10 @@ button {
   text-align: center;
   padding: 5px;
 }
+.delete-title {
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
 @media screen and (min-width: 720px) {
   .post-item {
     flex-direction: row;

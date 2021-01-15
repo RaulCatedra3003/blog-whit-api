@@ -7,6 +7,8 @@ import {
   showPostComments,
   openEditPostModal,
   savePostChanges,
+  openDeletePostModal,
+  deletePost,
 } from '../dispatcher/dispatcher';
 import { Comment } from '../views/components/Comment';
 import { EditPostModal } from '../views/components/EditPostModal';
@@ -24,10 +26,9 @@ export const addEventListenersFragment = status => {
   $(document).off().find('*').off();
   switch (status) {
     case 'home':
-      $('.post-item__content h2').each((index, element) => {
-        $(element).on('click', openPostModal);
-      });
+      $('.post-item__content h2').on('click', openPostModal);
       $('.bx-edit').on('click', openEditPostModal);
+      $('.bxs-trash').on('click', openDeletePostModal);
       break;
     case 'postModal':
       $('.bx-x-circle').on('click', closePostModal);
@@ -36,6 +37,10 @@ export const addEventListenersFragment = status => {
     case 'editPostModal':
       $('.bx-x-circle').on('click', closePostModal);
       $('#save-button').on('click', savePostChanges);
+    case 'deletePostModal':
+      $('.bx-x-circle').on('click', closePostModal);
+      $('#yes-button').on('click', deletePost);
+      $('#no-button').on('click', closePostModal);
   }
 };
 

@@ -7,13 +7,15 @@ import {
   createModalFragment,
   validateInput,
 } from '../helpers/helpers';
+import { DeletePostModal } from '../views/components/DeletePostModal';
 import { EditPostModal } from '../views/components/EditPostModal';
 import { PostModal } from '../views/components/PostModal';
 import { renderView } from '../views/renderView';
+import { deletePostInAPI } from '../API-logic/delete';
 
 export let status;
 
-export const initApp = () => {
+export const homeApp = () => {
   getPostList(0, 10).done(postList => {
     status = 'home';
     renderView(createFragmentList(postList));
@@ -73,7 +75,7 @@ export const savePostChanges = e => {
 
       setTimeout(() => {
         closePostModal(e);
-        initApp();
+        homeApp();
       }, 5000);
     });
   } else {
@@ -84,4 +86,26 @@ export const savePostChanges = e => {
       $('.error-validation').remove();
     }, 5000);
   }
+};
+
+export const openDeletePostModal = e => {
+  e.preventDefault();
+  status = 'deletePostModal';
+  renderView(createModalFragment($(e.target).data('postId'), DeletePostModal));
+};
+
+export const deletePost = e => {
+  e.preventDefault();
+  deletePostInAPI($(e.target).data('postId')).done(() => {
+    $('.postModal-item__button').after(
+      `<p class="ok-validation">Delete successful</p>`,
+    );
+    $('.postModal-item__button').remove();
+    $('.delete-title').remove();
+
+    setTimeout(() => {
+      closePostModal(e);
+      homeApp();
+    }, 5000);
+  });
 };
