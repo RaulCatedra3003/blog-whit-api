@@ -1,1 +1,3 @@
-//llamar a render view home
+const { initApp } = require('./dispatcher/dispatcher');
+
+initApp();
