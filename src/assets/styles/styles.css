@@ -1,141 +1,10 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-  v2.0 | 20110126
-  License: none (public domain)
-*/
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol,
-ul {
-  list-style: none;
-}
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-/*RESET*/
-
 body {
   font-family: 'Cinzel', serif;
   position: relative;
   background-color: #f7d7b0;
 }
 .header {
-  background-color:#adc3c1;
+  background-color: #adc3c1;
   width: 100%;
   font-size: 1.5em;
   height: 50px;
@@ -147,27 +16,27 @@ body {
   padding-left: 15px;
   font-weight: bold;
 }
-.header::after{
-  content: "";
-  background-image: url("https://previews.123rf.com/images/print2d/print2d1405/print2d140500003/28558040-vector-del-mosaico-con-el-cl%C3%A1sico-meandro-ornamento-griego.jpg");
+.header::after {
+  content: '';
+  background-image: url('https://previews.123rf.com/images/print2d/print2d1405/print2d140500003/28558040-vector-del-mosaico-con-el-cl%C3%A1sico-meandro-ornamento-griego.jpg');
   top: 40px;
   width: 100%;
   height: 20px;
   position: absolute;
   background-size: contain;
 }
-nav{
-  margin:10px 5px
+nav {
+  margin: 10px 5px;
 }
-.nav-page__button{
+.nav-page__button {
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
-.selected{
-  border-bottom:  2px solid #812c2a
+.selected {
+  border-bottom: 2px solid #812c2a;
 }
-.nav-page__button:hover{
+.nav-page__button:hover {
   background-color: #adc3c1;
   border-radius: 50%;
 }
@@ -218,7 +87,7 @@ button {
   background-color: transparent;
   cursor: pointer;
   margin: 0 5px;
-  color:#812c2a;
+  color: #812c2a;
   font-size: 1.1em;
 }
 
@@ -275,7 +144,7 @@ button {
 }
 .postModal-item__comentarios button,
 .postModal-item__button button {
-  background-image: radial-gradient(#8ca47c,#9f986d) ;
+  background-image: radial-gradient(#8ca47c, #9f986d);
   border: 10px double #333b1b;
   border-radius: 5px;
   right: 10px;
@@ -347,7 +216,7 @@ button {
   }
 }
 @media screen and (min-width: 400px) {
-  .header{
+  .header {
     font-size: 2em;
   }
 }
