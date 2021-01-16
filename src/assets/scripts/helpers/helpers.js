@@ -14,12 +14,20 @@ import {
 import { Comment } from '../views/components/Comment';
 import { EditPostModal } from '../views/components/EditPostModal';
 
-export const createFragmentList = data => {
+export const createFragmentList = (data, modalType) => {
   const fragment = $(document.createDocumentFragment());
-  $(fragment).append(Navbar);
   data.forEach(element => {
-    $(fragment).append(Post(element));
+    $(fragment).append(modalType(element));
   });
+  return fragment;
+};
+export const addNavBar = fragment => {
+  return $(fragment).prepend(Navbar);
+};
+export const createModalFragment = (content, modalType) => {
+  const fragment = $(document.createDocumentFragment());
+  $(fragment).append($('#root').html());
+  $(fragment).append(modalType(content));
   return fragment;
 };
 
@@ -44,28 +52,6 @@ export const addEventListenersFragment = status => {
       $('#yes-button').on('click', deletePost);
       $('#no-button').on('click', closePostModal);
   }
-};
-
-export const createModalFragment = (content, modalType) => {
-  const fragment = $(document.createDocumentFragment());
-  $(fragment).append($('#root').html());
-  $(fragment).append(modalType(content));
-  return fragment;
-};
-
-export const backHomePage = () => {
-  $('#root').children().last().remove();
-  const fragment = $(document.createDocumentFragment());
-  $(fragment).append($('#root').html());
-  return fragment;
-};
-
-export const createCommentsList = data => {
-  const fragment = $(document.createDocumentFragment());
-  data.forEach(element => {
-    $(fragment).append(Comment(element));
-  });
-  return fragment;
 };
 
 export const validateInput = () => {

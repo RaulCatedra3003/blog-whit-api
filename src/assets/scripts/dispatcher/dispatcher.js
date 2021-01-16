@@ -1,8 +1,7 @@
 import { getComments, getPost, getPostList, getUser } from '../API-logic/get';
 import { patchPost } from '../API-logic/patch';
 import {
-  backHomePage,
-  createCommentsList,
+  addNavBar,
   createFragmentList,
   createModalFragment,
   validateInput,
@@ -12,6 +11,8 @@ import { EditPostModal } from '../views/components/EditPostModal';
 import { PostModal } from '../views/components/PostModal';
 import { renderView } from '../views/renderView';
 import { deletePostInAPI } from '../API-logic/delete';
+import { Post } from '../views/components/Post';
+import { Comment } from '../views/components/Comment';
 
 export const status = {
   page: 'home',
@@ -23,7 +24,7 @@ export const status = {
 export const homeApp = () => {
   getPostList(status.start, status.limit).done(postList => {
     status.page = 'home';
-    renderView(createFragmentList(postList));
+    renderView(addNavBar(createFragmentList(postList, Post)));
     $('.nav-page__button').removeClass('selected');
     $(`.nav-page__button:nth-child(${status.position})`).addClass('selected');
   });
@@ -49,13 +50,13 @@ export const openPostModal = e => {
 export const closePostModal = e => {
   e.preventDefault();
   status.page = 'home';
-  renderView(backHomePage());
+  homeApp();
 };
 
 export const showPostComments = e => {
   e.preventDefault();
   getComments($('#comment-button').data('postid')).done(data => {
-    renderView(createCommentsList(data), '#comments-content');
+    renderView(createFragmentList(data, Comment), '#comments-content');
   });
 };
 
