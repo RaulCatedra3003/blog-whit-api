@@ -2,7 +2,7 @@
 export const Navbar = () => {
   const template = `
   <header class="header">
-    <h1 class="header__title">Blog with API</h1>
+    <h1 class="header__title">digital bibliothecam</h1>
   </header>
   <nav class="nav-page">
     <button class="nav-page__button selected">1</button>
