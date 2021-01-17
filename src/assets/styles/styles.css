@@ -1,3 +1,8 @@
+:root {
+  --nav-color: #adc3c1;
+  --principal-color: #812c2a;
+}
+
 body {
   font-family: 'Cinzel', serif;
   position: relative;
@@ -8,7 +13,7 @@ nav {
 }
 hr {
   width: 80%;
-  background-color: #812c2a;
+  background-color: var(--principal-color);
 }
 button {
   font-family: 'Cinzel', serif;
@@ -18,7 +23,7 @@ button {
 }
 
 .header {
-  background-color: #adc3c1;
+  background-color: var(--nav-color);
   width: 100%;
   font-size: 1.5em;
   height: 50px;
@@ -45,11 +50,11 @@ button {
   cursor: pointer;
 }
 .nav-page__button:hover {
-  background-color: #adc3c1;
+  background-color: var(--nav-color);
   border-radius: 50%;
 }
 .selected {
-  border-bottom: 2px solid #812c2a;
+  border-bottom: 2px solid var(--principal-color);
 }
 
 #root {
@@ -61,7 +66,7 @@ button {
 .post-item {
   display: flex;
   flex-direction: column;
-  border: 2px ridge #812c2a;
+  border: 2px ridge var(--principal-color);
   border-radius: 5px;
   margin: 5px 0;
   width: 90%;
@@ -88,7 +93,7 @@ button {
   background-color: transparent;
   cursor: pointer;
   margin: 0 5px;
-  color: #812c2a;
+  color: var(--principal-color);
   font-size: 1.1em;
 }
 
@@ -118,7 +123,7 @@ button {
   width: 60%;
   max-height: 80%;
   background-color: #f6e9cd;
-  border: 2px solid #812c2a;
+  border: 2px solid var(--principal-color);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -174,12 +179,12 @@ button {
   margin: 10px 0;
 }
 .editPostModal-Content input {
-  border: 1px solid #812c2a;
+  border: 1px solid var(--principal-color);
   font-size: 1.1em;
   border-radius: 2px;
 }
 .editPostModal-Content textarea {
-  border: 1px solid #812c2a;
+  border: 1px solid var(--principal-color);
   height: 100px;
   border-radius: 2px;
   overflow: auto;
